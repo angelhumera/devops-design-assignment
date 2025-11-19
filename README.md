@@ -5,8 +5,7 @@ This repository contains the design for a 3-tier backend system (UI, API, Databa
 ## Architecture Diagram
 - Diagram created in Draw.io  
 - Exported PDF: `diagram/architecture_design.pdf`  
-- Original Draw.io file: `diagram/architecture.drawio'  
----
+- Original Draw.io file: `diagram/architecture.drawio' 
 ## Design Overview
 
 ### 1. UI (Frontend)
