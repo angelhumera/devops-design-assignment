@@ -1,35 +1,28 @@
 # Frontend (UI) Architecture Design
 
 ## Overview
-The UI is a static frontend application (React/Angular/Vue) that is deployed on AWS using S3 and delivered globally through CloudFront. The design focuses on high availability, performance, and scalability, as required in the assignment.
+The frontend is a **React-based Single Page Application (SPA)**. It is built into static files and deployed on AWS using S3 and delivered globally through CloudFront. This design meets all assignment requirements for scalability, routing, caching, and multi-AZ availability.
 
 ---
 
 ## Components Used
 
-### 1. Amazon S3 (Static Website Hosting)
-- Stores the built frontend files (HTML, CSS, JS, images).
-- Fully serverless and automatically scalable.
-- No servers to maintain.
-- Cost-efficient for hosting static sites.
+### 1. Amazon S3 (Static Hosting)
+- Stores the built React files (HTML, CSS, JS, images)
+- Automatically scalable and serverless
+- No servers to maintain
+- Highly durable storage
 
 ### 2. Amazon CloudFront (CDN)
-- Distributes the UI globally through CDN edge locations.
-- Reduces latency for users in different geographical locations.
-- Caches static assets for faster performance.
-- Routes incoming traffic to S3.
+- Delivers UI globally through edge locations
+- Caches static assets for faster load times
+- Reduces latency for users around the world
+- Routes traffic to S3
 
-### 3. Route 53 (Optional but recommended)
-- Manages application domain (e.g., **www.example.com**).
-- Routes traffic to CloudFront.
-- Highly available DNS service.
-
----
-
-## High Availability & Multi-AZ Usage
-- S3 is automatically multi-AZ because AWS stores data redundantly.
-- CloudFront uses globally distributed edge locations for maximum availability.
-- No single point of failure exists in this setup.
+### 3. Amazon Route 53 (DNS)
+- Manages the application domain (e.g., **www.example.com**)
+- Routes end-user traffic to CloudFront
+- Highly available DNS service
 
 ---
 
@@ -38,37 +31,37 @@ User → Route 53 → CloudFront → S3
 
 ---
 
+## High Availability & Multi-AZ
+- S3 is inherently multi-AZ (AWS stores data redundantly)
+- CloudFront uses globally distributed edge locations
+- This ensures zero downtime and automatic failover
+
+---
+
 ## Scaling
-- **S3** scales automatically based on traffic volume.
-- **CloudFront** handles large user traffic using global edge caches.
-- No manual scaling steps are required.
+- **S3 scales automatically** with unlimited upload/download capacity
+- **CloudFront handles very high global traffic**
+- No manual scaling is needed
 
 ---
 
 ## Caching
-- CloudFront caches static files (HTML, JS, CSS).
-- Improves page load time.
-- Reduces cost by minimizing direct S3 requests.
+- CloudFront caches frequently accessed files (JS, CSS, images)
+- Reduces S3 load
+- Improves webpage speed
+- Reduces overall cost
 
 ---
 
 ## Security
-- S3 bucket is configured as private.
-- Only CloudFront can access the bucket (Origin Access Control).
-- HTTPS enabled using AWS Certificate Manager.
+- S3 bucket remains private
+- Only CloudFront can read the S3 bucket (Origin Access Control)
+- HTTPS enabled using AWS Certificate Manager (ACM)
+- Optional restriction: allow traffic only from CloudFront
 
 ---
 
 ## Deployment Process
-1. Developer builds frontend locally (npm run build).
-2. Output folder is uploaded to S3.
-3. CloudFront cache is invalidated.
-4. New UI is available globally within seconds.
-
----
-
-## Why This Architecture?
-- Serverless → no servers or maintenance.
-- Highly scalable and cost-effective.
-- Fast global delivery of static assets.
-- Meets all assignment requirements for frontend design.
+1. Developer builds the React app (`npm run build`)
+2. Build output folder is uploaded to S3
+3. CloudFront cache is invalidated so users receive
