@@ -1,6 +1,5 @@
 
 # Database Design — 3-Tier Backend
-
 This document explains the database part of my backend design.  
 
 I am using **Amazon RDS** with **MySQL** as the database for the backend.  
@@ -18,3 +17,6 @@ For reliability and scaling:
 The backend EC2 instance connects to the database through the private subnet, and all communication is secure (SSL/TLS).  
 
 **Flow:**  
+
+EC2 (API) → Private Subnet → RDS MySQL Database
+This setup keeps the database **secure, private, and ready to scale**, which matches the assignment requirements.
