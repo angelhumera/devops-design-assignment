@@ -33,9 +33,6 @@ This is a CI/CD workflow for the backend API using GitHub Actions (or GitLab/Jen
 **Flow:**  
   Developer → GitHub → CI (Build + Test) → CD (Dev → Stage → Prod) → API Live
 ---
-**Flow:**  
-Developer → GitHub → CI (Build + Test) → CD (Dev → Stage → Prod) → API Live
-
 This shows how code goes from development to live API safely and automatically.
 
 
