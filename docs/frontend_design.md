@@ -58,8 +58,9 @@ Flow:
 
 ---
 
-## Why This Architecture
-- No servers to manage
-- Very fast due to CDN
-- Highly scalable and cost-efficient
-- Matches the assignment’s requirement of a clean and simple UI design
+## Why I chose this design
+I picked this setup because it is easy to manage and works well for any frontend application.  
+Since React builds into static files, hosting it on S3 and delivering it through CloudFront makes the application load fast and handle more users without extra work.  
+
+This approach is simple, reliable, and fits well with the assignment's requirement of designing a scalable frontend.
+
