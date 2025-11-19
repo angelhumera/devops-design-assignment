@@ -1,42 +1,45 @@
-# Backend (API) Architecture Design
+# Backend (API) Architecture Design — EC2 + Python (Step by Step)
 
-## Where the API Runs
-The backend API runs on a single **EC2 instance**.  
-I chose EC2 because it is simple to set up and easy to understand for a basic backend design.
-
----
-
-## How Traffic Reaches the Backend
-Users or the frontend send requests to the EC2 public IP or domain.  
-A security group allows only required ports (for example: port 80 or 443).
-
-Flow:  
-User → EC2 (Python API)
-
-*I kept this part simple because EC2 itself can receive traffic.*
+## 1️⃣ Where the API Runs
+- The backend API runs on a **single EC2 instance**.  
+- Python (Flask/FastAPI) is used to implement the API.  
+- EC2 is chosen because it is simple to set up and easy to understand.  
 
 ---
 
-## Horizontal Scaling
-If more users come, I can launch more EC2 instances and put them behind a load balancer.  
-For now, I am using a **single EC2**, but the design can scale later by adding more servers.
+## 2️⃣ How Traffic Reaches the Backend
+- Users or the frontend send requests to the EC2 **public IP or domain**.  
+- **Security groups** allow only required ports (HTTP 80 / HTTPS 443).  
+- For scalability, an **Application Load Balancer (ALB)** can be added later.  
+
+**Traffic Flow:**  
 
 ---
 
-## Secret Management
-Database username and password are stored using **environment variables** on the EC2 instance.  
-Only the EC2 instance can access these values.
+## 3️⃣ Horizontal Scaling
+- Currently using a single EC2 instance.  
+- To handle higher traffic:
+  - Launch more EC2 instances
+  - Add them to an **ALB**
+  - Use **Auto Scaling Groups (ASG)** to automatically adjust instance count based on CPU/memory/load.
 
 ---
 
-## API → Database Communication
-The EC2 instance connects to the database using the private endpoint inside the VPC.  
-A database security group allows access only from the EC2 instance.
+## 4️⃣ Secret Management
+- Database credentials and API keys are stored as **environment variables** on EC2.  
+- Only the EC2 instance can access them.  
+- Best practice: Use **AWS Secrets Manager** in production.
 
 ---
 
-##  I chose this design
-This is a simple backend setup.  
-EC2 is easy to understand, easy to deploy, and fits well for learning and basic projects.  
+## 5️⃣ API → Database Communication
+- EC2 connects to the database via **private VPC endpoint**.  
+- Database security group allows access only from the EC2 instance.  
+- Communication is **encrypted (SSL/TLS)**.
 
+---
 
+## 6️⃣ Why This Design
+- Simple, easy-to-understand 3-tier architecture.  
+- Supports **future scaling** with ALB + ASG.  
+- Ensures **secure backend-to-database communication**.  
