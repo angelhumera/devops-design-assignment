@@ -1,22 +1,20 @@
+
 # Database Design — 3-Tier Backend
 
-This is the database part of my backend design.  
+This document explains the database part of my backend design.  
 
-- I am using **Amazon RDS** with **MySQL** for the database.  
-- The database is in a **private subnet** inside a VPC, so it is **not accessible from the internet**.  
-- Only the **EC2 backend** can connect to it.  
+I am using **Amazon RDS** with **MySQL** as the database for the backend.  
+The database is placed in a **private subnet** inside a VPC so it is not accessible from the internet.  
+Only the **EC2 backend** can connect to it.  
 
-For security:  
-- Database credentials are stored safely (like environment variables or AWS Secrets Manager).  
-- Security groups make sure only the backend EC2 can access the database.  
+Database credentials (username/password) are stored securely using **environment variables** or **AWS Secrets Manager**.  
+Security groups ensure that only the EC2 instance can access the database.  
 
-For scaling and reliability:  
-- Multi-AZ deployment keeps it highly available.  
-- Read replicas can be added if needed.  
-- Automatic backups are turned on so data can be restored anytime.  
+For reliability and scaling:  
+- Multi-AZ deployment keeps the database available even if one availability zone fails.  
+- Read replicas can be added later to handle more traffic.  
+- Automatic backups are enabled so the database can be restored if needed.  
 
-**How it connects to the backend:**  
-The backend EC2 instance connects to the database through a private subnet in the VPC.  
-Only the EC2 instance can access the database, and all communication is secure (SSL/TLS).  
+The backend EC2 instance connects to the database through the private subnet, and all communication is secure (SSL/TLS).  
 
-
+**Flow:**  
