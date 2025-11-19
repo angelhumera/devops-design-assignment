@@ -38,3 +38,8 @@ This repository contains the design for a 3-tier backend system (UI, API, Databa
 ---
 
 ## Flow Summary
+User → UI → API → Database
+Developer → GitHub → CI/CD → EC2 (API)
+---
+**Folder Structure**
+
