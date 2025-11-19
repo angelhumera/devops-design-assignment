@@ -35,8 +35,8 @@ A database security group allows access only from the EC2 instance.
 
 ---
 
-## Why I chose this design
+##  I chose this design
 This is a simple backend setup.  
 EC2 is easy to understand, easy to deploy, and fits well for learning and basic projects.  
-This also matches the assignment requirement of choosing one backend option.
+
 
