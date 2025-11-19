@@ -1,4 +1,4 @@
-# Database Architecture — 3-Tier Backend System
+# Database Architecture — Tier Backend System
 
 This folder contains the database design for a simple 3-tier backend architecture.
 
