@@ -8,7 +8,7 @@ The frontend (React/Angular/Vue) is deployed using a fully serverless and highly
 ## Components
 
 ### ✔ Route 53
-- Points domain eg:www.example.com to CloudFront
+- Points domain (eg:www.example.com)to CloudFront
 - Global DNS service
 
 ### ✔ CloudFront (CDN)
