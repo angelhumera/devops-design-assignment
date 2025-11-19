@@ -42,4 +42,10 @@ User → UI → API → Database
 Developer → GitHub → CI/CD → EC2 (API)
 ---
 **Folder Structure**
+backend_design.md
+frontend_design.md
+database_design.md
+cicd_design.md
+diagram/
+This shows the overall design, scaling approach, and secure flow of the system.
 
