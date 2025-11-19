@@ -11,7 +11,7 @@ This folder contains the database design for a simple 3-tier backend architectur
 
 ---
 
-## Key Features
+## point
 1. **Secure Access**
    - Only the backend EC2 instance can connect to the database.  
    - Security groups restrict access.  
