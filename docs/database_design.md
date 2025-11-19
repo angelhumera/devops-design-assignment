@@ -1,39 +1,22 @@
-# Database Architecture — Tier Backend System
+# Database Design — 3-Tier Backend
 
-This folder contains the database design for a simple 3-tier backend architecture.
+This is the database part of my backend design.  
 
----
+- I am using **Amazon RDS** with **MySQL** for the database.  
+- The database is in a **private subnet** inside a VPC, so it is **not accessible from the internet**.  
+- Only the **EC2 backend** can connect to it.  
 
-## Database Overview
-- **Database Service:** Amazon RDS (Relational Database Service)  
-- **Database Engine:** MySQL (relational database, as mentioned in the assignment)  
-- **Deployment:** Private subnet inside a VPC (not publicly accessible)  
+For security:  
+- Database credentials are stored safely (like environment variables or AWS Secrets Manager).  
+- Security groups make sure only the backend EC2 can access the database.  
 
----
+For scaling and reliability:  
+- Multi-AZ deployment keeps it highly available.  
+- Read replicas can be added if needed.  
+- Automatic backups are turned on so data can be restored anytime.  
 
-## point
-1. **Secure Access**
-   - Only the backend EC2 instance can connect to the database.  
-   - Security groups restrict access.  
-   - Credentials stored securely using **AWS Secrets Manager**.
-
-2. **High Availability & Scalability**
-   - Multi-AZ deployment for high availability.  
-   - Optional read replicas for scaling read-heavy workloads.  
-   - Storage auto-scaling enabled.
-
-3. **Backup & Recovery**
-   - Automatic backups enabled.  
-   - Point-in-time recovery supported.
-
-4. **Communication with API**
-   - EC2 backend connects via **private VPC endpoint**.  
-   - All communication is encrypted (SSL/TLS).
-
-**Flow Diagram :**
----
-## Purpose
-- Ensures **secure, scalable, and highly available database** for the backend.  
-- Matches assignment requirements: relational database, secure communication, scalability, and AWS best practices.
+**How it connects to the backend:**  
+The backend EC2 instance connects to the database through a private subnet in the VPC.  
+Only the EC2 instance can access the database, and all communication is secure (SSL/TLS).  
 
 
