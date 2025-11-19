@@ -1,6 +1,6 @@
 # Backend (API) Architecture Design — EC2 + Python (Simple)
 
-This document explains the backend API design for a simple 3-tier architecture using AWS EC2.
+This explains the backend API design for a  architecture using AWS EC2.
 
 ---
 
