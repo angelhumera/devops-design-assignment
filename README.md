@@ -1,16 +1,12 @@
 # DevOps Design Take-Home Assignment
 
 This repository contains the design for a 3-tier backend system (UI, API, Database) with CI/CD workflow.
-
 ---
-
 ## Architecture Diagram
 - Diagram created in Draw.io  
 - Exported PDF: `diagram/architecture_design.pdf`  
-- Original Draw.io file: `diagram/architecture`  
-
+- Original Draw.io file: `diagram/architecture.drawio'  
 ---
-
 ## Design Overview
 
 ### 1. UI (Frontend)
